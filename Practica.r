@@ -1,14 +1,15 @@
-
-# PRACTICA 1
-# Universitario: Alan Israel Arnez Flores RU: 1758342   CI: 13764464 L.P.
-# ==========================================================================
+cat("PRACTICA 1\n")
+cat("UNIVERSITARIO: Alan Israel Arnez Flores\n")
+cat("RU: 1758342\n")
+cat("CI: 13764464 L.P.\n")
+cat("=========================================================================\n")
 # Instalar paquete necesario si no está instalado
 if (!require(jsonlite)) {
   install.packages("jsonlite")
   library(jsonlite)
 }
 
-# Capitulo 1 ----> VARIABLES ALEATORIAS BIVARIANTES O BIDIMENSIONALES
+cat("Capitulo 1 ----> VARIABLES ALEATORIAS BIVARIANTES O BIDIMENSIONALES\n")
 # -------------------------------------------------------------------------
 # Ejercicio 1
 # Consideremos una situaci´on en la cu´al se miden la tensi´on superficial (X) y la acidez de un producto
@@ -23,7 +24,7 @@ if (!require(jsonlite)) {
 # c) Hallar las densidades marginales de X e Y .
 # d) Calcular P(X < 1.5), P(Y < 2.5) y P(X + Y ≤ 4)
 # SOLUCION EJERCICIO 1
-cat("EJERCICIO 1\n")
+cat("\nEJERCICIO 1\n")
 cat("===============\n")
 # Definir la función de densidad conjunta
 f_xy <- function(x, y) {
@@ -253,6 +254,8 @@ print(marginal_X)
 
 cat("Distribución marginal de Y:\n")
 print(marginal_Y)
+
+cat("\nCapitulo 2 ----> DISTRIBUCIONES MUESTRALES\n")
 # Ejercicio 6
 # Las alturas de 5000 estudiantes son normalmente distribuidas con media 172 cm y desviaci´on est´andar
 # de 7.5 cm. Si fueron obtenidas 100 muestras con 36 estudiantes cada una, en cu´antas muestras se puede
@@ -260,7 +263,7 @@ print(marginal_Y)
 # a) entre 169 y 174
 # b) superior a 170
 # Suponga que el muestreo es sin reemplazamiento.
-cat("EJERCICIO 6\n")
+cat("\nEJERCICIO 6\n")
 cat("===============\n")
 
 # Parámetros
@@ -362,3 +365,28 @@ prob_10_11 <- pnorm(z_11) - pnorm(z_10)
 
 # Imprimir resultados
 cat("La probabilidad de que la media muestral esté entre 10 y 11 años es:", prob_10_11, "\n")
+# Ejercicio 10 
+#  La media de una distribuci´on muestral de medias es 50, y su desviaci´on est´andar es 10. Suponga que
+# la distribuci´on de la poblaci´on original es normal.
+# a) ¿Qu´e porcentaje de las medias de la muestra estar´a entre 45 y 55?
+# b) ¿Qu´e porcentaje de los valores medios de la muestra ser´a menor que la media de la poblaci´on?
+cat("EJERCICIO 10\n")
+cat("===============\n")
+# Parámetros
+mu_x_bar <- 50
+sigma_x_bar <- 10
+
+# a) Probabilidad de que la media muestral esté entre 45 y 55
+z_45 <- (45 - mu_x_bar) / sigma_x_bar
+z_55 <- (55 - mu_x_bar) / sigma_x_bar
+
+prob_45_55 <- pnorm(z_55) - pnorm(z_45)
+
+# b) Probabilidad de que la media muestral sea menor que la media de la población
+z_50 <- (50 - mu_x_bar) / sigma_x_bar
+
+prob_less_than_mean <- pnorm(z_50)
+
+# Imprimir resultados
+cat("a) Porcentaje de las medias de la muestra entre 45 y 55:", prob_45_55 * 100, "%\n")
+cat("b) Porcentaje de las medias de la muestra menor que la media de la población:", prob_less_than_mean * 100, "%\n")
